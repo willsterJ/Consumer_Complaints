@@ -47,4 +47,5 @@ class UniqueItem(object):
         x = self.max_count / self.total_complaints
         # due to round() implementing the banker's rounding algorithm, the numbers whose ones digit are even
         # round down while odd ones digit round up. For example, 0.5 -> 0, 1.5 -> 2. Use this function instead
+        # to get the old school rounding
         return decimal.Decimal(x*100).quantize(decimal.Decimal(1), rounding=decimal.ROUND_HALF_UP)

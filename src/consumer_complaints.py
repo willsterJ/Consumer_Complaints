@@ -24,4 +24,6 @@ csv_worker.read_file_and_populate_table(input_path, table_manager)
 table_manager.sort_table()  # sort the table in order of product, year
 csv_worker.write_report(table_manager, output_path)
 
+print('done.')
+
 
