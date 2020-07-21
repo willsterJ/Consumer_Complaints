@@ -29,7 +29,7 @@ class ItemLookupTableManager(object):
         return self.lookup_table[product][year]
 
     # sort the table by order of product followed by year
-    def sort(self):
+    def sort_table(self):
         # First sort table by product name
         ordered_dict = collections.OrderedDict(sorted(self.lookup_table.items()))
         # Then for each table[product], sort by year
