@@ -1,7 +1,8 @@
 class UniqueItem(object):
     '''
-    Class that represents the unique item entry. For this project specifically, we will be using [product, year] as
-    our unique ID
+    Class that represents the unique item entry. For this project specifically, we will be using (product, year) as
+    our unique ID. For example, mortgage,2019 and mortgage,2018 would be considered as separate items due to the year
+    difference.
     '''
     def __init__(self, product, year):
         self.product = product
@@ -13,6 +14,7 @@ class UniqueItem(object):
         self.max_count = 0  # TODO set to -1 ?
         self.max_key = ''
 
+    # update the count for the set of companies for each item
     def update_company_complaint_count(self, company_name):
         if company_name in self.company_map:
             val = self.company_map[company_name]

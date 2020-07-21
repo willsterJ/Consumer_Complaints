@@ -1,22 +1,26 @@
-
 import argparse
+import time
+import os
 from src.csvWorker import CSVWorker
-from src.itemLookupTable import ItemLookupTable
+from src.itemLookupTableManager import ItemLookupTableManager
+
+abs_path = os.path.abspath(os.getcwd())  # path of current working directory
 
 # Parse arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('--input', type=str, default='./input/complaints.csv', help='input file path')
-parser.add_argument('--output', type=str, default='./output/report.csv', help='output file path')
+parser.add_argument('--input', type=str, default=abs_path+'/input/complaints.csv', help='input file path')
+parser.add_argument('--output', type=str, default=abs_path+'/output/report.csv', help='output file path')
 args = parser.parse_args()
 
+# extract arguments
 input_path = args.input
 output_path = args.output
-lookup_table = ItemLookupTable()
 
-csv_worker = CSVWorker()
-csv_worker.read_file_and_populate_table(input_path, lookup_table)
+# initialize data handler. The table will handle the updating of unique items (i.e. product, year pairs)
+table_manager = ItemLookupTableManager()
+csv_worker = CSVWorker()  # IO worker to handle reads and writes
 
-lookup_table.sort()
+csv_worker.read_file_and_populate_table(input_path, table_manager)
+csv_worker.write_report(table_manager, output_path)
 
-csv_worker.write_report(lookup_table, output_path)
 
