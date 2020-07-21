@@ -20,5 +20,5 @@ layer1[product] -> layer2[year] -> uniqueItem
 
 Accessing the item takes constant time.
 After processing all the rows in the input file, we then
-proceed to sort the keys of the table by order of product
-and then year before writing final result to report.
+proceed to sort the table keys by order of product key
+and then year key before writing final result to report.
