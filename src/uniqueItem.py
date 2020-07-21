@@ -1,3 +1,5 @@
+import decimal
+
 class UniqueItem(object):
     '''
     Class that represents the unique item entry. For this project specifically, we will be using (product, year) as
@@ -43,4 +45,6 @@ class UniqueItem(object):
 
     def get_highest_percentage(self):
         x = self.max_count / self.total_complaints
-        return round(x * 100)
+        # due to round() implementing the banker's rounding algorithm, the numbers whose ones digit are even
+        # round down while odd ones digit round up. For example, 0.5 -> 0, 1.5 -> 2. Use this function instead
+        return decimal.Decimal(x*100).quantize(decimal.Decimal(1), rounding=decimal.ROUND_HALF_UP)
