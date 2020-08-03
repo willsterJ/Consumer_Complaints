@@ -1,5 +1,6 @@
 ## Consumer Complaints Report
-This project was written and compiled in Python 3.7.8
+This project was written and compiled in Python 3.7.8 and is
+my working solution to this problem: https://github.com/insightdatascience/consumer_complaints
 
 To run the program, from the main parent directory:
 ```
